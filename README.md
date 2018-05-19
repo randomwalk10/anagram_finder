@@ -23,8 +23,9 @@ the total time complexity is O(N) on average cases. In this case I assume the nu
 any word does not surpass 255, which is reasonable.
 
 Then I run:
-source compile.sh
-./anagram_finder words.txt
+
+	source compile.sh
+	./anagram_finder words.txt
 
 The result(in seconds) given by my 2016 mackbook pro is:
 
