@@ -27,9 +27,13 @@ source compile.sh
 ./anagram_finder words.txt
 
 The result(in seconds) given by my 2016 mackbook pro is:
+
 ordered_map method: 
+
 	time elapsed for anagram sets generation: 1.98391, with 466545 lines processed
 	time elapsed for anagram sets output: 0.151343, with 13850 total number of anagram sets
+
 unordered_map method:
+
 	time elapsed for anagram sets generation: 1.29335, with 466545 lines processed
 	time elapsed for anagram sets output: 0.144183, with 13850 total number of anagram sets
