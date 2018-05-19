@@ -1,6 +1,6 @@
 #include <fstream>
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <vector>
 #include "time.h"
 using namespace std;
@@ -28,6 +28,12 @@ struct word_key{
 			}
 		}
 		isValid = (letter_count) ? true : false;
+	}
+	string getStr(){
+		string output;
+		for(size_t i=0; i<26; ++i)
+			output.push_back((char)count[i]);
+		return output;
 	}
 };
 
@@ -58,7 +64,7 @@ int main(int argc, char** argv){
 	ifstream file_in;
 	string new_word;
 	int total_lines = 0;
-	map< word_key, vector<string> > anagram_map;
+	unordered_map< string, vector<string> > anagram_map;
 	file_in.open(argv[1]);
 	if(!file_in.is_open()) return -1;
 	while(!file_in.eof()){
@@ -69,11 +75,12 @@ int main(int argc, char** argv){
 		word_key key = word_key(new_word);
 		//insert into anagram map
 		if(key.isValid){
-			map< word_key, vector<string> >::iterator iter;
-			iter = anagram_map.find(key);
+			unordered_map< string, vector<string> >::iterator iter;
+			string hash_str = key.getStr();
+			iter = anagram_map.find(hash_str);
 			if(iter==anagram_map.end()){
 				vector<string> new_set(1, new_word);
-				anagram_map[key] = new_set;
+				anagram_map[hash_str] = new_set;
 			}
 			else iter->second.push_back(new_word);
 		}
@@ -99,7 +106,7 @@ int main(int argc, char** argv){
 	ofstream file_out;
 	file_out.open("output.txt");
 	int anagram_set_count = 0;
-	for(map< word_key, vector<string> >::iterator iter = \
+	for(unordered_map< string, vector<string> >::iterator iter = \
 			anagram_map.begin(); iter != anagram_map.end(); \
 			++iter){
 		//check if set is valid
