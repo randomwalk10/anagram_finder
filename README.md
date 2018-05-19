@@ -24,9 +24,9 @@ any word does not surpass 255, which is reasonable.
 
 Then I run:
 source compile.sh
-./anagram_finder word.txt
+./anagram_finder words.txt
 
-The result given by my 2016 mackbook pro is:
+The result(in seconds) given by my 2016 mackbook pro is:
 ordered_map method: 
 	time elapsed for anagram sets generation: 1.98391, with 466545 lines processed
 	time elapsed for anagram sets output: 0.151343, with 13850 total number of anagram sets
